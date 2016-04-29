@@ -22,14 +22,16 @@
         (speak)
         (test-cljs)))
 
-(deftask dev []
-  (comp (watch)
-        (speak)
-        (reload :on-jsload 'app.core/main)
-        (cljs-repl)
-        (cljs :compiler-options {:target :nodejs}
-              :optimizations :none)))
 
 (deftask build []
-  (cljs :compiler-options {:target :nodejs}
-        :optimizations :none))
+  (task-options! target {:dir #{"target"}}
+                 cljs   {:optimizations :none
+                         :compiler-options {:target :nodejs}
+                         :source-map true})
+  (comp (cljs)
+        (target)))
+
+(deftask dev []
+  (comp (watch)
+        (build)))
+

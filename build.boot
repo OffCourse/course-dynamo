@@ -4,6 +4,7 @@
                  [adzerk/boot-cljs-repl       "0.3.0"          :scope "test"]
                  [adzerk/boot-reload          "0.4.5"          :scope "test"]
                  [crisptrutski/boot-cljs-test "0.2.2-SNAPSHOT" :scope "test"]
+                 [org.clojure/core.async "0.2.374"]
                  [org.clojure/clojure         "1.7.0"]
                  [org.clojure/clojurescript   "1.7.228"]
                  [com.cemerick/piggieback     "0.2.1"          :scope "test"]

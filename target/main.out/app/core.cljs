@@ -17,8 +17,9 @@
 
 
 (defn handler [event context cb]
-  (let [course (-> event
-                   (js->clj :keywordize-keys true)
-                   :course)]
+  (if-let [course (some-> event
+                          (js->clj :keywordize-keys true)
+                          :course)]
     (go
-      (println (<! (save-course course))))))
+      (cb nil (<! (save-course course))))
+    (cb "couldn't save course")))
